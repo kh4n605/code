@@ -1,3 +1,5 @@
+
+/* MOBILE MENU STYLE START */
 /* Text left of hamburger in the Theme Builder */
 .et_mobile_nav_menu:before  {
 content: 'MENU';
@@ -61,3 +63,31 @@ height: -webkit-fill-available;
 .mobile_nav.opened .et_mobile_menu {
 display:block !important;
 }
+
+/* MOBILE MENU STYLE END */
+
+/* Search button to Search Icon start*/
+
+.ds-icon-search input.et_pb_searchsubmit,
+.widget_search input#searchsubmit {
+    background: transparent;
+    color: transparent;
+    border: none;
+    width: 55px;
+    z-index: 2;
+}
+.ds-icon-search input.et_pb_s,
+.widget_search input#s {
+    padding-right: 55px !important;
+}
+.ds-icon-search .et_pb_searchform:before,
+.widget_search::before {
+    content: '\55';
+    position: absolute;
+    font-family: 'ETModules';
+    z-index: 1;
+    right: 0;
+    font-size: 20px;
+    padding: 8px 20px;
+}
+/* Search button to Search Icon end*/
