@@ -1,0 +1,63 @@
+/* Text left of hamburger in the Theme Builder */
+.et_mobile_nav_menu:before  {
+content: 'MENU';
+position: absolute;
+right: 40px;
+margin-top:5px;
+color: #333;
+font-size:16px;
+}
+
+/* Text left of hamburger in Divi 3 */
+#et_mobile_nav_menu:before  {
+content: 'MENU';
+position: absolute;
+right: 33px;
+bottom:30px;
+color: #333;
+font-size:16px;
+}
+
+/* X icon in expanded mobile menu */
+.mobile_nav.opened .mobile_menu_bar:before {
+content: '\4d';
+}
+
+/* Remove the top line in the mobile menu*/
+.et_mobile_menu {
+border-top:0;
+}
+
+/* Center-align moble menu items */
+
+.et_mobile_menu li {
+text-align:center !important;
+}
+  
+.et_mobile_menu li li, .et_mobile_menu li ul {
+padding-left:0 !important;
+}
+
+/* Make mobile menu fullwidth */
+.et_mobile_menu {
+min-width: 100vw;
+margin-left: -10vw;
+}
+
+/* Make the mobile menu full height */
+
+.et_mobile_menu {
+min-height:100vh !important;
+min-height: -webkit-fill-available;
+padding-top:50px !important;
+}
+
+html {
+height: -webkit-fill-available;
+}
+
+/* Remove the animation to avoid delay */
+
+.mobile_nav.opened .et_mobile_menu {
+display:block !important;
+}
