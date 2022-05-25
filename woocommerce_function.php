@@ -145,3 +145,47 @@
                 return __('Read more', 'woocommerce');
         }
     }
+
+    /* CHECKOUT PAGE TRANSLATION */
+    function lan_chng_btn()
+    {
+        echo '<form action="" method="post"><label class="ml-3">Change Language to :</label><input type="submit" name="lan-chng" class="btn btn-success" value="Italian"></form>';
+    }
+    add_action('woocommerce_before_checkout_form', 'lan_chng_btn', 30);
+
+    $italian = $_POST["lan-chng"];
+    if (isset($italian)) {
+        function success($fields)
+        {
+            unset($fields["billing"]["billing_company"]);
+            $fields["billing"]["billing_first_name"]["label"] = 'NOME';
+            $fields["billing"]["billing_last_name"]["label"] = 'COGNOME';
+            $fields["billing"]["billing_country"]["label"] = 'NAGIONE';
+            return $fields;
+        }
+        add_filter('woocommerce_checkout_fields', 'success', 20, 1);
+    }
+    /* CHECKOUT PAGE TRANSLATION END*/
+
+    // Thank you pages based on the chosen payment method
+
+    add_action('woocommerce_thankyou', 'ibrahim_redir_based_on_payment_method');
+    function ibrahim_redir_based_on_payment_method()
+    {
+
+        /* do nothing if we are not on the appropriate page */
+        if (!is_wc_endpoint_url('order-received') || empty($_GET['key'])) {
+            return;
+        }
+        $order_id = wc_get_order_id_by_order_key($_GET['key']);
+        $order = wc_get_order($order_id);
+
+        if ('bacs' == $order->get_payment_method()) { /* WC 3.0+ */
+            wp_redirect('https://yourwebsite.com/direct-bank-transfer-thank-you-page/');
+            exit;
+        }
+        if ('ppec_paypal' == $order->get_payment_method()) { /* WC 3.0+ */
+            wp_redirect('https://yourwebsite.com/paypal-checkout-thank-you-page/');
+            exit;
+        }
+    }
