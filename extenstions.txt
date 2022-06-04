@@ -1,0 +1,11 @@
+auto close tag
+auto rename tag
+classicpress
+code runner
+dracula official
+format html in php
+html css support
+path intellisense
+php intelephense
+phpfmt
+woocommerc - snippets
