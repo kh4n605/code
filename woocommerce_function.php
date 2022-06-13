@@ -181,11 +181,159 @@
         $order = wc_get_order($order_id);
 
         if ('bacs' == $order->get_payment_method()) { /* WC 3.0+ */
-            wp_redirect('https://yourwebsite.com/direct-bank-transfer-thank-you-page/');
+            wp_redirect(site_url('/bacs'));
             exit;
         }
-        if ('ppec_paypal' == $order->get_payment_method()) { /* WC 3.0+ */
-            wp_redirect('https://yourwebsite.com/paypal-checkout-thank-you-page/');
+        if ('cod' == $order->get_payment_method()) { /* WC 3.0+ */
+            wp_redirect(site_url('/cod'));
             exit;
         }
+    }
+
+    // Save Country and Phone Field in My Account Edit details 
+    /**
+     * Step 1. Add your field
+     */
+    add_action('hook_phone', 'ibrahim_add_phone_field_edit_account_form');
+    function ibrahim_add_phone_field_edit_account_form()
+    {
+
+        woocommerce_form_field(
+            'billing_phone',
+            array(
+                'type'        => 'text',
+                'required'    => true,
+                'label'       => 'Phone',
+                'class'          => array('woocommerce-input'),
+                'default'      => '83838'
+            ),
+            get_user_meta(get_current_user_id(), 'billing_phone', true)
+        );
+    }
+
+    /**
+     * Step 2. Save field value
+     */
+    add_action('woocommerce_save_account_details', 'ibrahim_save_billing_phone');
+    function ibrahim_save_billing_phone($user_id)
+    {
+
+        update_user_meta($user_id, 'billing_phone', sanitize_text_field($_POST['billing_phone']));
+    }
+    /**
+     * Step 3. Make it required
+     */
+    add_filter('woocommerce_save_account_details_required_fields', 'ibrahim_make_phone_field_required');
+    function ibrahim_make_phone_field_required($required_fields)
+    {
+
+        $required_fields['billing_phone'] = 'Phone';
+        return $required_fields;
+    }
+
+    /**
+     * Step 1. Add your field
+     */
+    add_action('hook_country', 'ibrahim_add_field_edit_account_form');
+    function ibrahim_add_field_edit_account_form()
+    {
+
+        woocommerce_form_field(
+            'billing_country',
+            array(
+                'type'        => 'select',
+                'required'    => true,
+                'label'       => 'Country',
+                'class'          => array('woocommerce-Input'),
+                'options'       => array(
+                    'Kuwait'     => __('Kuwait'),
+                    'Saudi Arabia'     => __('Saudi Arabia'),
+                ),
+            ),
+            get_user_meta(get_current_user_id(), 'billing_country', true)
+        );
+    }
+
+    /**
+     * Step 2. Save field value
+     */
+    add_action('woocommerce_save_account_details', 'ibrahim_save_account_details');
+    function ibrahim_save_account_details($user_id)
+    {
+
+        update_user_meta($user_id, 'billing_country', sanitize_text_field($_POST['billing_country']));
+    }
+    /**
+     * Step 3. Make it required
+     */
+    add_filter('woocommerce_save_account_details_required_fields', 'ibrahim_make_field_required');
+    function ibrahim_make_field_required($required_fields)
+    {
+
+        $required_fields['billing_country'] = 'Country';
+        return $required_fields;
+    }
+
+    // Remove Fields from My Account Edit Address and Re-order 
+    add_filter('woocommerce_billing_fields', 'custom_override_billing_fields');
+
+    function custom_override_billing_fields($fields)
+    {
+
+        unset($fields['billing_postcode']);
+        unset($fields['billing_company']);
+        unset($fields['billing_state']);
+        unset($fields['billing_city']);
+        unset($fields['billing_address_1']);
+        unset($fields['billing_address_2']);
+
+        $fields['billing_email'] = array(
+            'label'     => __('Email', 'woocommerce'),
+            'required'  => true,
+            'class'     => array('form-row-first'),
+            'priority'  => 30,
+        );
+
+        $fields['billing_phone'] = array(
+            'label'     => __('Phone', 'woocommerce'),
+            'required'  => true,
+            'class'     => array('form-row-last'),
+            'clear'     => true,
+            'priority'  => 31,
+        );
+
+
+        return $fields;
+    }
+
+
+    add_filter('woocommerce_shipping_fields', 'custom_override_shipping_fields');
+
+    function custom_override_shipping_fields($fields)
+    {
+
+        unset($fields['shipping_postcode']);
+        unset($fields['shipping_company']);
+        unset($fields['shipping_state']);
+        unset($fields['shipping_city']);
+        unset($fields['shipping_address_1']);
+        unset($fields['shipping_address_2']);
+
+        $fields['shipping_email'] = array(
+            'label'     => __('Email', 'woocommerce'),
+            'required'  => true,
+            'class'     => array('form-row-first'),
+            'priority'  => 30,
+        );
+
+        $fields['shipping_phone'] = array(
+            'label'     => __('Phone', 'woocommerce'),
+            'required'  => true,
+            'class'     => array('form-row-last'),
+            'clear'     => true,
+            'priority'  => 31,
+        );
+
+
+        return $fields;
     }
