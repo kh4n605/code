@@ -1,0 +1,26 @@
+1. Cool Timeline
+2. Divi Mad Menu
+3. Pre Loader Plus
+4. Tab - Accordion, FAQ
+5. Timeline Block
+6. Wow Divi Carousel lite
+7. Lordicon Website for creating animated icon
+8. Social Login, Social Sharing by miniOrange
+9. https://wordpress.org/plugins/wp-map-block/ 
+10. Spotlight - Social Media Feeds (insta feed)
+11. https://github.com/kevinruscoe/acf-star-rating-field
+12. CURCY - WooCommerce Multi Currency Premium
+13. Custom Product Tabs for WooCommerce
+14. Divi Blog Extras
+15. Divi Supreme Pro
+16. FiboSearch - AJAX Search for WooCommerce
+17. Image Carousel Divi
+18. Menu Cart Module Divi
+19. Post Carousel Divi
+20. Product Slider for WooCommerce
+21. Responsive Lightbox & Gallery
+22. Tidio Chat
+23. WooCommerce Wholesale Prices by Rymera web co
+24. YITH WooCommerce Wishlist
+25. CTX Feed - FB/INSTA Shop
+26. Techipress Github - https://github.com/orgs/YTTechiePress/repositories
