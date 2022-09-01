@@ -337,3 +337,35 @@
 
         return $fields;
     }
+
+    // FEDEX WEIGHT BASED SHIPPING JERZY 4MYPET 
+
+    // Display the cart item weight in cart and checkout pages
+    add_filter('woocommerce_get_item_data', 'display_custom_item_data', 10, 2);
+    function display_custom_item_data($cart_item_data, $cart_item)
+    {
+        if ($cart_item['data']->get_weight() > 0) {
+            $cart_item_data[] = array(
+                'name' => __('Weight', 'woocommerce'),
+                'value' =>  $cart_item['data']->get_weight()  . ' ' . get_option('woocommerce_weight_unit')
+            );
+        }
+        return $cart_item_data;
+    }
+    add_filter('flexible-shipping/condition/contents_weight', 'change_flexible_total_weight', 10, 1);
+    function change_flexible_total_weight($contents_weight)
+    {
+        $items = array();
+        foreach (WC()->cart->get_cart() as $cart_item) {
+            // gets the product object
+            $product            = $cart_item['data'];
+            $product_weight_str = $product->get_weight() . " ";
+            array_push($items, $product_weight_str);
+        }
+        $total_weight = WC()->cart->get_cart_contents_weight();
+        global $coefficient;
+        $heaviest_product =  max($items);
+        $contents_weight = $heaviest_product + ($total_weight - $heaviest_product) * $coefficient;
+        return $contents_weight;
+    }
+    $coefficient = 0.35;
