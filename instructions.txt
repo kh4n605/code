@@ -1,0 +1,24 @@
+
+============== WooCommerce Test Payment Card =================
+
+ Card No: 4242 4242 4242 4242
+ Name    : Zhang San 
+ Date      : 12/34 
+ CVC     : 567
+ Country : United States
+ Postcode : 12345
+ 
+============== Divi Portfolio Image Scroll on Hover =================
+
+Set Column Height and Overflow X and Y to hidden
+Set module margin 0 and in Hover give a Negative margin
+Give Transition approximately 6500ms
+
+
+============== Divi Filterable Column with "Filter for Divi" =================
+
+Button and filterable Column will be on the different section
+Set button class for "All" to "df-button" and the other to "df-button dfc-{name}"
+Set Section class "df-area" and Column class "dfc-{name}"
+
+Demo : https://divi.iotexdigital.com/
