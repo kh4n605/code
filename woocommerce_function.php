@@ -401,3 +401,52 @@
             $wc_emails['WC_Email_Failed_Order']->trigger($order_id);
         }
     }
+
+    // ARTWORKS - THEO PROJECT WITH FRONTEND UPLOAD 
+
+
+    add_filter('woocommerce_add_to_cart_redirect', 'ibrahim_redirect_checkout_add_cart');
+
+    function ibrahim_redirect_checkout_add_cart()
+    {
+        return wc_get_checkout_url();
+    }
+
+    function ibrahim_notification_form()
+    { ?>
+ <h2 style="text-align:center;">
+     <br />
+     <strong> Upload images and submit the form below </strong>
+ </h2>
+ <?php
+        echo do_shortcode('[forminator_form id="116"]'); ?>
+ <?php
+    }
+    add_action('woocommerce_account_content', 'ibrahim_notification_form', 20);
+
+
+    // SAMPLE ARTWORKS DOWNLOAD
+    function ibrahim_preview_images()
+    {
+        $user_id = get_current_user_id();
+        $preview_images = get_field('preview_artwork', 'user_' . $user_id);
+        $final_artwork = get_field('final_artwork', 'user_' . $user_id);
+        if ($preview_images) { ?>
+ <div style="display:flex;justify-content:center;">
+     <br /><a href="<?php echo $preview_images ?>" class="preview_artworks" target="_blank"><strong>Download Sample
+             Artworks</strong></a><?php
+                                            if ($final_artwork) { ?>
+     <br /><a href="<?php echo $final_artwork ?>" class="preview_artworks" target="_blank"><strong>Confirm
+             Order</strong></a>
+     <?php }
+                ?>
+ </div>
+ <?php }
+    }
+    add_action('woocommerce_account_content', 'ibrahim_preview_images', 30);
+    // USER FILE MANAGER
+    function ibrahim_file_manager()
+    {
+        echo do_shortcode('[ffmwp]');
+    }
+    add_action('woocommerce_account_content', 'ibrahim_file_manager', 40);
