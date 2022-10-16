@@ -45,3 +45,6 @@ add_action('widgets_init', 'ibrahim_khan_widget_init');
 
 // DISPLAY WIDGETS
 dynamic_sidebar('khan_ft_1');
+
+// SEE ALL METHODS OF A CLASS 
+print_r(get_class_methods(WC()->cart)); // WC()->cart is a class
