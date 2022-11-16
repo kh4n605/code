@@ -26,3 +26,16 @@
 26. Techipress Github - https://github.com/orgs/YTTechiePress/repositories
 27. Polylang connect for Elementor
 28. Frontend File Manager - https://wordpress.org/plugins/nmedia-user-file-uploader/
+29. Checkout Field Editor - https://wordpress.org/plugins/woo-checkout-field-editor-pro/
+30. WP Mega Menu - https://wordpress.org/plugins/wp-megamenu/
+31. PDF Invoices & Packing Slips for WooCommerce
+32. Forminator – Contact Form, Payment Form & Custom Form Builder
+33. Variation Swatches for WooCommerce - https://wordpress.org/plugins/woo-variation-swatches/
+34. Best Upsell for WooCommerce - https://wordpress.org/plugins/best-upsell-for-woocommerce/
+35. Social Share Watermark
+36. WPC Product Bundles for WooCommerce - https://wordpress.org/plugins/woo-product-bundle/
+37. BEAR – Bulk Editor - https://wordpress.org/plugins/woo-bulk-editor/
+38. Advanced Access Manager - https://wordpress.org/plugins/advanced-access-manager/
+39. PhastPress - https://wordpress.org/plugins/phastpress/ (Speed Up plugin)
+40. Shortcoder - https://wordpress.org/plugins/shortcoder/
+41. WP Super Cache
