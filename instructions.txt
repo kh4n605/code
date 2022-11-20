@@ -22,3 +22,11 @@ Set button class for "All" to "df-button" and the other to "df-button dfc-{name}
 Set Section class "df-area" and Column class "dfc-{name}"
 
 Demo : https://divi.iotexdigital.com/
+
+
+============== Get Design Idea for Layout =================
+
+https://divi.express/
+https://diviawesome.com/divi-layouts/
+https://diviflash.com/layouts/
+https://www.divi-pixel.com/layouts/
