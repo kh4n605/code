@@ -86,7 +86,21 @@
         }
     }
 
+    /**
+     * Change the default state and country on the checkout page
+     */
+    add_filter('default_checkout_billing_country', 'change_default_checkout_country');
+    add_filter('default_checkout_billing_state', 'change_default_checkout_state');
 
+    function change_default_checkout_country()
+    {
+        return 'XX'; // country code
+    }
+
+    function change_default_checkout_state()
+    {
+        return 'XX'; // state code
+    }
 
     // IF CATEGORY IS 'X and it's subcategory' ADD MEASUREMENT UNIT BEFORE 'ADD TO CART' 
     add_action('woocommerce_after_add_to_cart_quantity', 'wc_text_after_quantity', 50);
