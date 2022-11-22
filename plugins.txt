@@ -40,3 +40,4 @@
 40. Shortcoder - https://wordpress.org/plugins/shortcoder/
 41. WP Super Cache
 42. Menu Cart for WooCommerce - https://wordpress.org/plugins/woocommerce-menu-bar-cart/
+43. LightStart - Maintenance Mode, Coming Soon and Landing Page Builder by Themeisle

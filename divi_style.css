@@ -91,3 +91,13 @@ display:block !important;
     padding: 8px 20px;
 }
 /* Search button to Search Icon end*/
+
+/** My Account **/
+.woocommerce-account .woocommerce-MyAccount-navigation{
+	display:none;
+}
+.woocommerce-account .woocommerce-MyAccount-content {
+    float: unset;
+    width: 100%;
+    padding: 0 10%;
+}
