@@ -41,3 +41,4 @@
 41. WP Super Cache
 42. Menu Cart for WooCommerce - https://wordpress.org/plugins/woocommerce-menu-bar-cart/
 43. LightStart - Maintenance Mode, Coming Soon and Landing Page Builder by Themeisle
+44. Instantio – WooCommerce Quick Checkout - https://wordpress.org/plugins/instantio/
