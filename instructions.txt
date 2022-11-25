@@ -30,3 +30,14 @@ https://divi.express/
 https://diviawesome.com/divi-layouts/
 https://diviflash.com/layouts/
 https://www.divi-pixel.com/layouts/
+
+
+============== Take shortcode input with ACF and show the result on frontend =================
+
+1. Create a textarea field from ACF
+2. Place the shortcode in this field
+3. Add this filter in functions.php = add_filter('acf/format_value/type=textarea', 'do_shortcode');
+
+============== Show the result on frontend =================
+
+1. Add Text field and and select dynamic field and select Custom Field Name
