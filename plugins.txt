@@ -48,3 +48,4 @@
 48. Happy Addons for Elementor - https://wordpress.org/plugins/happy-elementor-addons/
 49. Elementskit by wpmet
 50. Elementor Header & Footer Builder by Brainstrom
+51. Themify – WooCommerce Product Filter (divi)
