@@ -1,4 +1,8 @@
 
+============== Fonts =================
+
+Barlow, Josephin Sans,
+
 ============== WooCommerce Test Payment Card =================
 
  Card No: 4242 4242 4242 4242
@@ -41,3 +45,7 @@ https://www.divi-pixel.com/layouts/
 ============== Show the result on frontend =================
 
 1. Add Text field and and select dynamic field and select Custom Field Name
+
+============== Override Divi Module =================
+
+https://intercom.help/elegantthemes/en/articles/4532734-moving-blog-module-in-child-theme

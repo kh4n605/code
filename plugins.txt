@@ -42,3 +42,9 @@
 42. Menu Cart for WooCommerce - https://wordpress.org/plugins/woocommerce-menu-bar-cart/
 43. LightStart - Maintenance Mode, Coming Soon and Landing Page Builder by Themeisle
 44. Instantio – WooCommerce Quick Checkout - https://wordpress.org/plugins/instantio/
+45. Timeline Widget For Elementor - https://wordpress.org/plugins/timeline-widget-addon-for-elementor/
+46. Templately - https://wordpress.org/plugins/templately/
+47. Jeg Elementor Kit - https://wordpress.org/plugins/jeg-elementor-kit/
+48. Happy Addons for Elementor - https://wordpress.org/plugins/happy-elementor-addons/
+49. Elementskit by wpmet
+50. Elementor Header & Footer Builder by Brainstrom
