@@ -49,3 +49,11 @@ https://www.divi-pixel.com/layouts/
 ============== Override Divi Module =================
 
 https://intercom.help/elegantthemes/en/articles/4532734-moving-blog-module-in-child-theme
+
+
+============== Change Divi Icon with code =================
+
+Divi Icon codes - https://dividezigns.com/divi-icon-codes/
+1. Copy codes and paste on default code by CSS on before pseudo elements
+2. If the default font-family belongs to FontAwesome, copy font FontAwesome content
+    and past by CSS
