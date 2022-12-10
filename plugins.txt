@@ -49,3 +49,4 @@
 49. Elementskit by wpmet
 50. Elementor Header & Footer Builder by Brainstrom
 51. Themify – WooCommerce Product Filter (divi)
+52. User Role Editor - https://wordpress.org/plugins/user-role-editor/
