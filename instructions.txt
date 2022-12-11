@@ -57,3 +57,9 @@ Divi Icon codes - https://dividezigns.com/divi-icon-codes/
 1. Copy codes and paste on default code by CSS on before pseudo elements
 2. If the default font-family belongs to FontAwesome, copy font FontAwesome content
     and past by CSS
+
+
+============== Close POP UP of POP Up Maker by clicking a button =================
+
+1. Inspect default "Close" button and copy CSS
+2. Give these CSS to the button want to function as pop up close
