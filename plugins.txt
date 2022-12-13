@@ -50,3 +50,7 @@
 50. Elementor Header & Footer Builder by Brainstrom
 51. Themify – WooCommerce Product Filter (divi)
 52. User Role Editor - https://wordpress.org/plugins/user-role-editor/
+53. Minicart for WooCommerce - https://wordpress.org/plugins/woo-minicart/
+54. CookieYes | GDPR Cookie Consent
+55. WebToffee PayPal Express Checkout Payment Gateway for WooCommerce ( Free )
+56. Webtoffee Stripe
