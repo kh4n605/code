@@ -1,5 +1,5 @@
  <?php
-
+    //  Disable AJAX add to cart buttons 
     function ibrahim_redirect_checkout_add_cart()
     {
         return wc_get_checkout_url();
@@ -464,3 +464,91 @@
         echo do_shortcode('[ffmwp]');
     }
     add_action('woocommerce_account_content', 'ibrahim_file_manager', 40);
+
+
+
+    /**
+     * Display Attribute in Shop Loop
+     * Customise variable add to cart button for loop.
+     *
+     * Remove qty selector and simplify.
+     */
+    function iconic_loop_variation_add_to_cart_button()
+    {
+        global $product;
+
+        ?>
+ <div class="woocommerce-variation-add-to-cart variations_button">
+     <button type="submit"
+         class="custom_add_to_cart single_add_to_cart_button button"><?php echo esc_html($product->single_add_to_cart_text()); ?></button>
+     <input type="hidden" name="add-to-cart" value="<?php echo absint($product->get_id()); ?>" />
+     <input type="hidden" name="product_id" value="<?php echo absint($product->get_id()); ?>" />
+     <input type="hidden" name="variation_id" class="variation_id" value="0" />
+ </div>
+ <?php
+    }
+    function iconic_add_to_cart_form_action($redirect)
+    {
+        if (!is_archive()) {
+            return $redirect;
+        }
+
+        return '';
+    }
+    add_filter('woocommerce_add_to_cart_form_action', 'iconic_add_to_cart_form_action');
+    add_action('wp_footer', 'myScript');
+
+
+    function myScript()
+    {
+    ?>
+ <script>
+jQuery(document).ready(function($) {
+    "use strict";
+
+    $('.custom_add_to_cart').click(function(e) {
+        e.preventDefault();
+        var id = $(this).next().next().next().attr('value');
+        var data = {
+            product_id: id,
+            quantity: 1
+        };
+        $(this).parent().addClass('loading');
+        $.post(wc_add_to_cart_params.wc_ajax_url.toString().replace('%%endpoint%%', 'add_to_cart'),
+            data,
+            function(response) {
+
+                if (!response) {
+                    return;
+                }
+                if (response.error) {
+                    alert("Custom Massage ");
+                    $('.custom_add_to_cart').parent().removeClass('loading');
+                    return;
+                }
+                if (response) {
+
+                    var url = woocommerce_params.wc_ajax_url;
+                    url = url.replace("%%endpoint%%", "get_refreshed_fragments");
+                    $.post(url, function(data, status) {
+                        $(".woocommerce.widget_shopping_cart").html(data.fragments[
+                            "div.widget_shopping_cart_content"]);
+                        if (data.fragments) {
+                            jQuery.each(data.fragments, function(key, value) {
+
+                                jQuery(key).replaceWith(value);
+                            });
+                        }
+                        jQuery("body").trigger("wc_fragments_refreshed");
+                    });
+                    $('.custom_add_to_cart').parent().removeClass('loading');
+
+                }
+
+            });
+
+    });
+});
+ </script>
+ <?php
+    }
