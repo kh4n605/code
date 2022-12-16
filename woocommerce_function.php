@@ -465,10 +465,15 @@
     }
     add_action('woocommerce_account_content', 'ibrahim_file_manager', 40);
 
+    /**
+     * Display Custom Attribute on Shop Loop 
+     */
+    global $product;
+    echo wc_display_product_attributes($product);
 
 
     /**
-     * Display Attribute in Shop Loop 
+     * Display Attribute in Shop Loop with add to Cart
      **/
 
     /**
