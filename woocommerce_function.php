@@ -589,3 +589,21 @@ jQuery(document).ready(function($) {
  </script>
  <?php
     }
+
+
+    // Remove additional information tab
+
+    add_filter('woocommerce_product_tabs', function ($tabs) {
+        unset($tabs['additional_information']);
+        return $tabs;
+    }, 98);
+
+    // Add additional Field 
+    add_action('woocommerce_product_thumbnails', 'ibrahim_product_description');
+    function ibrahim_product_description()
+    { // additional field function
+        global $product;
+        if ($product && ($product->has_attributes() || apply_filters('wc_product_enable_dimensions_display', $product->has_weight() || $product->has_dimensions()))) {
+            wc_get_template('single-product/tabs/additional-information.php');
+        }
+    }
