@@ -468,7 +468,39 @@
 
 
     /**
-     * Display Attribute in Shop Loop
+     * Display Attribute in Shop Loop 
+     **/
+
+    /**
+     * Replace add to cart button in the loop.
+     */
+    function iconic_change_loop_add_to_cart()
+    {
+        remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
+        add_action('woocommerce_after_shop_loop_item', 'iconic_template_loop_add_to_cart', 10);
+    }
+
+    add_action('init', 'iconic_change_loop_add_to_cart', 10);
+
+    /**
+     * Use single add to cart button for variable products.
+     */
+    function iconic_template_loop_add_to_cart()
+    {
+        global $product;
+
+        if (!$product->is_type('variable')) {
+            woocommerce_template_loop_add_to_cart();
+            return;
+        }
+
+        remove_action('woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 20);
+        add_action('woocommerce_single_variation', 'iconic_loop_variation_add_to_cart_button', 20);
+
+        woocommerce_template_single_add_to_cart();
+    }
+
+    /**
      * Customise variable add to cart button for loop.
      *
      * Remove qty selector and simplify.
