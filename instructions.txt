@@ -63,3 +63,8 @@ Divi Icon codes - https://dividezigns.com/divi-icon-codes/
 
 1. Inspect default "Close" button and copy CSS
 2. Give these CSS to the button want to function as pop up close
+
+
+============== Change Divi Header on Scroll =================
+
+https://www.elegantthemes.com/blog/divi-resources/how-to-swap-your-divi-header-for-another-one-on-scroll
