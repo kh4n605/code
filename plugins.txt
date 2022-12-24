@@ -54,3 +54,4 @@
 54. CookieYes | GDPR Cookie Consent
 55. WebToffee PayPal Express Checkout Payment Gateway for WooCommerce ( Free )
 56. Webtoffee Stripe
+57. Product Category Slider for WooCommerce - https://wordpress.org/plugins/woo-category-slider-by-pluginever/
