@@ -34,6 +34,7 @@ https://divi.express/
 https://diviawesome.com/divi-layouts/
 https://diviflash.com/layouts/
 https://www.divi-pixel.com/layouts/
+https://www.divilayouts.com/    *Divi Free Layout*
 
 
 ============== Take shortcode input with ACF and show the result on frontend =================
@@ -68,3 +69,8 @@ Divi Icon codes - https://dividezigns.com/divi-icon-codes/
 ============== Change Divi Header on Scroll =================
 
 https://www.elegantthemes.com/blog/divi-resources/how-to-swap-your-divi-header-for-another-one-on-scroll
+
+
+============== Divi Free Layouts for Divi Plugin =================
+
+https://layoutsfordivibuilder.com/template-library/

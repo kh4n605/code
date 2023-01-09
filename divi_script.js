@@ -1,11 +1,12 @@
 
 /* FLASHING CONTENT AT THE START */
-<script type="text/javascript">
-var elm=document.getElementsByTagName("html")[0];elm.style.display="none";document.addEventListener("DOMContentLoaded",function(event) {elm.style.display="block"; });
-</script>
 
-/** Remove Image Attribute Text on Hove **/
-<script>
+var elm=document.getElementsByTagName("html")[0];elm.style.display="none";document.addEventListener("DOMContentLoaded",function(event) {elm.style.display="block"; });
+
+/* FLASHING CONTENT AT THE END */
+
+/** Remove Image Attribute Text on Hover START **/
+
 jQuery(document).ready(function($) {
     $("img").mouseenter(function() {
         let $lwp_title = $(this).attr("title");
@@ -17,4 +18,20 @@ jQuery(document).ready(function($) {
         $(this).removeAttr("lwp_title");
     });
 });
-</script>
+/** Remove Image Attribute Text on Hover END **/
+
+/* === DESIGN DIVI HAMBURGER START === */
+
+const menuBtn = document.querySelector('.mobile_menu_bar');
+	let menuOpen = false;
+	menuBtn.addEventListener('click',()=>{
+		if(!menuOpen){
+			menuBtn.classList.add('opened');
+			menuOpen = true;
+		}else{
+			menuBtn.classList.remove('opened');
+			menuOpen = false;
+		}
+	});
+
+/* === DESIGN DIVI HAMBURGER END === */

@@ -66,6 +66,69 @@ display:block !important;
 
 /* MOBILE MENU STYLE END */
 
+/* === DESIGN DIVI HAMBURGER START === */
+/* Styling Middle Line - Code By https://wa.me/+8801772812413 */
+.mobile_menu_bar{
+	width:35px;
+	height:3px;
+	background:#000; /* Change the color if you are using black background */
+	border-radius:20px;
+	transition: all .5s ease-in-out;
+}
+
+/* Styling Top and Bottom Line - Code By https://wa.me/+8801772812413 */
+.mobile_menu_bar:before,
+.mobile_menu_bar:after{
+	content:'';
+	height:3px;
+	position:absolute;
+	background:#000; /* Change the color if you are using black background */
+	border-radius:20px;
+	transition: all .5s ease-in-out;
+}
+
+/* Reducing width of Top Line - Code By https://wa.me/+8801772812413 */
+.mobile_menu_bar:before{
+	width:30px;
+	transform:translatey(-8px);
+	transition: all .5s ease-in-out;
+}
+
+/* Reducing width of Bottom Line - Code By https://wa.me/+8801772812413 */
+.mobile_menu_bar:after{
+	width:25px;
+	transform:translatey(8px);
+	transition: all .5s ease-in-out;
+
+}
+
+/* Sliding Middle line to the left - Code By https://wa.me/+8801772812413 */
+.mobile_nav.opened .mobile_menu_bar{
+	transform:translatex(-50px);
+	background:transparent;
+	transition: all .5s ease-in-out;
+}
+
+/* Rotating the line once it is open - Code By https://wa.me/+8801772812413 */
+.mobile_nav.opened .mobile_menu_bar:before{
+	transform:rotate(45deg) translate(35px, -35px);
+	transition: all .5s ease-in-out;
+}
+
+/* Rotating the line once it is open - Code By https://wa.me/+8801772812413 */
+.mobile_nav.opened .mobile_menu_bar:after{
+	transform:rotate(-45deg) translate(35px, 35px);
+	transition: all .5s ease-in-out;
+	width:30px;
+}
+
+/*If dropdown is overlapping hamburger use the below code*/
+
+ul#mobile_menu2 {
+    top: 30px;
+}
+/* === DESIGN DIVI HAMBURGER END === */
+
 /* Search button to Search Icon start*/
 
 .ds-icon-search input.et_pb_searchsubmit,
