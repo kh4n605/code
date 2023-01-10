@@ -20,6 +20,20 @@ jQuery(document).ready(function($) {
 });
 /** Remove Image Attribute Text on Hover END **/
 
+/** Remove Social Icon Attribute Text on Hover START **/
+jQuery(document).ready(function($) {
+    $("a.icon.et_pb_with_border").mouseenter(function() {
+        let $lwp_title = $(this).attr("title");
+        $(this).attr("lwp_title", $lwp_title);
+        $(this).attr("title", "");
+    }).mouseleave(function() {
+        let $lwp_title = $(this).attr("lwp_title");
+        $(this).attr("title", $lwp_title);
+        $(this).removeAttr("lwp_title");
+    });
+});
+/** Remove Social Icon Attribute Text on Hover END **/
+
 /* === DESIGN DIVI HAMBURGER START === */
 
 const menuBtn = document.querySelector('.mobile_menu_bar');
