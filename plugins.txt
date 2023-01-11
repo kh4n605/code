@@ -57,3 +57,5 @@
 57. Product Category Slider for WooCommerce - https://wordpress.org/plugins/woo-category-slider-by-pluginever/
 58. Paid Member Subscription - https://wordpress.org/plugins/paid-member-subscriptions/  (WooCommerce)
 59. Paid Membership Pro (Divi + Elementor)
+60. Tagembed (Social Feed) - https://wordpress.org/plugins/tagembed-widget/
+61. Testimonial Slider (Radius Theme) - https://wordpress.org/plugins/testimonial-slider-and-showcase/
