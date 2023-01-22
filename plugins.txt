@@ -59,3 +59,4 @@
 59. Paid Membership Pro (Divi + Elementor)
 60. Tagembed (Social Feed) - https://wordpress.org/plugins/tagembed-widget/
 61. Testimonial Slider (Radius Theme) - https://wordpress.org/plugins/testimonial-slider-and-showcase/
+62. Ditty - Formerly Ditty News Ticker

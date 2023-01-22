@@ -99,7 +99,7 @@
 
     function change_default_checkout_state()
     {
-        return 'XX'; // state code
+        return 'XX'; // state code, leave it empty if you don't want to set default state.
     }
 
     // IF CATEGORY IS 'X and it's subcategory' ADD MEASUREMENT UNIT BEFORE 'ADD TO CART' 
