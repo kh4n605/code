@@ -61,3 +61,4 @@
 61. Testimonial Slider (Radius Theme) - https://wordpress.org/plugins/testimonial-slider-and-showcase/
 62. Ditty - Formerly Ditty News Ticker
 63. Divi Torque 
+64. Extra Product Options Builder for WooCommerce (Checkbox with Price) - https://wordpress.org/plugins/additional-product-fields-for-woocommerce/
