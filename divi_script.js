@@ -49,3 +49,14 @@ const menuBtn = document.querySelector('.mobile_menu_bar');
 	});
 
 /* === DESIGN DIVI HAMBURGER END === */
+
+/* === iFrame full(content) width start for same domain === */
+
+function calcHeight(iframeElement){
+    var the_height=  iframeElement.contentWindow.document.body.scrollHeight;
+    iframeElement.height=  the_height;
+}
+
+<iframe src="./page.html" onLoad="calcHeight(this);" frameborder="0" scrolling="no" id="the_iframe" width="100%" ></iframe>
+
+/* === iFrame full width END === */

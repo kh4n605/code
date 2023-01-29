@@ -164,3 +164,9 @@ ul#mobile_menu2 {
     width: 100%;
     padding: 0 10%;
 }
+
+/* Contact Form 7 Date Picker icon color change */
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.6;
+}

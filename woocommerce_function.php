@@ -607,3 +607,15 @@ jQuery(document).ready(function($) {
             wc_get_template('single-product/tabs/additional-information.php');
         }
     }
+
+    /* Custom Thank You page redirect */
+    function wc_custom_thank_you_page($order_id)
+    {
+        $order = wc_get_order($order_id);
+
+        if ($order->get_billing_email()) {
+            wp_redirect('http://www.example.com/thank-you/');
+            exit;
+        }
+    }
+    add_action('woocommerce_thankyou', 'wc_custom_thank_you_page');
