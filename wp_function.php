@@ -48,3 +48,9 @@ dynamic_sidebar('khan_ft_1');
 
 // SEE ALL METHODS OF A CLASS 
 print_r(get_class_methods(WC()->cart)); // WC()->cart is a class
+
+// Remove WP admin menu page/link
+add_action('admin_init', function () {
+    remove_menu_page('edit.php?post_type=participants-database');
+    remove_menu_page('wpcf7');
+});
