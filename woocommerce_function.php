@@ -619,3 +619,12 @@ jQuery(document).ready(function($) {
         }
     }
     add_action('woocommerce_thankyou', 'wc_custom_thank_you_page');
+
+    // Add to Cart button Icon to WooCommerce shop loop
+    add_action('woocommerce_after_shop_loop_item', 'add_add_to_cart_button_to_loop', 9);
+    function add_add_to_cart_button_to_loop()
+    {
+        global $product;
+
+        echo '<a href="' . $product->add_to_cart_url() . '" class="button add_to_cart_button et-pb-icon">&#xe013;</a>';
+    }
