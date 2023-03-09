@@ -628,3 +628,35 @@ jQuery(document).ready(function($) {
 
         echo '<a href="' . $product->add_to_cart_url() . '" class="button add_to_cart_button et-pb-icon">&#xe013;</a>';
     }
+
+    // Returning Customer - Enable Guest Checkout
+    add_action('woocommerce_before_checkout_form', 'woocommerce_checkout_login_form', 10);
+
+    // Add a collapsible coupon field to the checkout page
+    add_action('woocommerce_checkout_before_customer_details', 'add_collapsible_coupon_field_to_checkout', 15);
+    function add_collapsible_coupon_field_to_checkout()
+    {
+        echo '<div id="coupon-div"><h3>' . __('Have a coupon?') . '</h3><a class="showcoupon" href="#">' . __('Click here to enter your code') . '</a><form method="post"><div class="coupon-form" style="display:none"><input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="' . __('Enter coupon code') . '" /><button type="submit" class="button" name="apply_coupon" value="' . __('Apply Coupon') . '">' . __('Apply Coupon') . '</button></div></form></div>';
+    }
+
+    // Apply the coupon code entered by the customer
+    add_action('woocommerce_applied_coupon', 'apply_coupon_code');
+    function apply_coupon_code()
+    {
+        global $woocommerce;
+        $woocommerce->cart->apply_coupon($_POST['coupon_code']);
+    }
+
+    add_action('wp_footer', 'collapseable_coupon_checkout');
+    function collapseable_coupon_checkout()
+    { ?>
+ // Toggle the visibility of the coupon form
+ <script>
+jQuery(document).ready(function($) {
+    $('.showcoupon').click(function() {
+        $('.coupon-form').slideToggle(200);
+        return false;
+    });
+});
+ </script>
+ <?php }
