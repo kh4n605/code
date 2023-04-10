@@ -67,3 +67,4 @@
 67. The Events Calendar
 68. Event Tickets and Registration (Sell Event Tickets)
 69. Event Manager and Tickets Selling Plugin for WooCommerce - https://wordpress.org/plugins/mage-eventpress/
+70. WPC Fly Cart for WooCommerce

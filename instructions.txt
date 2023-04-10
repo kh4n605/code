@@ -5,6 +5,8 @@ Barlow, Josephin Sans,
 
 ============== WooCommerce Test Payment Card =================
 
+https://woocommerce.com/document/woocommerce-payments/testing-and-troubleshooting/testing/#test-cards
+
  Card No: 4242 4242 4242 4242
  Name    : Zhang San 
  Date      : 12/34 
