@@ -660,3 +660,15 @@ jQuery(document).ready(function($) {
 });
  </script>
  <?php }
+
+ /* ===== ADD CLASS TO PRODUCT TITLE ===== */
+ add_filter( 'woocommerce_product_loop_title_classes', 'custom_woocommerce_product_loop_title_classes' );
+/**
+ * Append custom class(es) to the default WooCommerce product title class.
+ *
+ * @param string $class Existing class(es).
+ * @return string Modified class(es).
+ */
+function custom_woocommerce_product_loop_title_classes( $class ) {
+	return $class . ' notranslate'; // set your additional class(es) here.
+}
