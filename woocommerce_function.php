@@ -663,12 +663,144 @@ jQuery(document).ready(function($) {
 
  /* ===== ADD CLASS TO PRODUCT TITLE ===== */
  add_filter( 'woocommerce_product_loop_title_classes', 'custom_woocommerce_product_loop_title_classes' );
-/**
- * Append custom class(es) to the default WooCommerce product title class.
- *
- * @param string $class Existing class(es).
- * @return string Modified class(es).
- */
+
 function custom_woocommerce_product_loop_title_classes( $class ) {
 	return $class . ' notranslate'; // set your additional class(es) here.
 }
+
+ /* ===== ADD CUSTOM TAXONOMY AND DISPLAY ON FRONTEND ===== */
+
+function custom_taxonomy_author() {
+    $labels = array(
+        'name'              => _x( 'Authors', 'taxonomy general name' ),
+        'singular_name'     => _x( 'Author', 'taxonomy singular name' ),
+        'search_items'      => __( 'Search Authors' ),
+        'all_items'         => __( 'All Authors' ),
+        'parent_item'       => __( 'Parent Author' ),
+        'parent_item_colon' => __( 'Parent Author:' ),
+        'edit_item'         => __( 'Edit Author' ),
+        'update_item'       => __( 'Update Author' ),
+        'add_new_item'      => __( 'Add New Author' ),
+        'new_item_name'     => __( 'New Author Name' ),
+        'menu_name'         => __( 'Authors' ),
+    );
+
+    $args = array(
+        'hierarchical'      => true, // Set to false if you want a flat taxonomy like categories
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array( 'slug' => 'product_author' ), // You can change the slug
+    );
+
+    register_taxonomy( 'product_author', 'product', $args );
+}
+
+add_action( 'init', 'custom_taxonomy_author', 0 );
+// Display Author on Product Loop
+function display_product_author_on_loop() {
+    $author_terms = wp_get_post_terms( get_the_ID(), 'product_author' );
+
+    if ( ! empty( $author_terms ) && ! is_wp_error( $author_terms ) ) {
+        echo '<div class="product-author">';
+        foreach ( $author_terms as $author_term ) {
+            echo '<span class="author-name">' . esc_html( $author_term->name ) . '</span>';
+        }
+        echo '</div>';
+    }
+}
+
+add_action( 'astra_woo_shop_title_after', 'display_product_author_on_loop', 5 );
+
+// Display Author on Cart Page
+add_filter('woocommerce_cart_item_name', 'display_custom_taxonomy_term', 10, 3);
+function display_custom_taxonomy_term($product_name, $cart_item, $cart_item_key) {
+    $product_id = $cart_item['product_id'];
+    $taxonomy = 'product_author'; // Replace with your custom taxonomy name
+
+    // Get the terms
+    $terms = get_the_terms($product_id, $taxonomy);
+
+    if ($terms && !is_wp_error($terms)) {
+        $term_names = array_map(function ($term) {
+            return $term->name;
+        }, $terms);
+
+        $term_string = implode(', ', $term_names);
+        $product_name .= '<span class="custom-taxonomy"><br>' . $term_string . '</span>';
+    }
+
+    return $product_name;
+}
+
+// Display Author on Home Page
+function ibrahim_display_author() {
+    $authors = get_terms( array(
+        'taxonomy'   => 'product_author',
+        'hide_empty' => false,
+    ) );
+
+    if ( ! empty( $authors ) && ! is_wp_error( $authors ) ) {
+        $output = '<ul class="author-list">';
+        foreach ( $authors as $author ) {
+            $author_link = get_term_link( $author );
+            $output .= '<li><a href="' . esc_url( $author_link ) . '">' . esc_html( $author->name ) . '</a></li>';
+        }
+        $output .= '</ul>';
+    }
+
+    return $output;
+}
+add_shortcode( 'ibrahim_author_list', 'ibrahim_display_author' );
+// Register custom taxonomy
+function custom_publisher_taxonomy() {
+    $labels = array(
+        'name'                       => _x( 'Publishers', 'taxonomy general name', 'textdomain' ),
+        'singular_name'              => _x( 'Publisher', 'taxonomy singular name', 'textdomain' ),
+        'search_items'               => __( 'Search Publishers', 'textdomain' ),
+        'popular_items'              => __( 'Popular Publishers', 'textdomain' ),
+        'all_items'                  => __( 'All Publishers', 'textdomain' ),
+        'edit_item'                  => __( 'Edit Publisher', 'textdomain' ),
+        'update_item'                => __( 'Update Publisher', 'textdomain' ),
+        'add_new_item'               => __( 'Add New Publisher', 'textdomain' ),
+        'new_item_name'              => __( 'New Publisher Name', 'textdomain' ),
+        'separate_items_with_commas' => __( 'Separate publishers with commas', 'textdomain' ),
+        'add_or_remove_items'        => __( 'Add or remove publishers', 'textdomain' ),
+        'choose_from_most_used'      => __( 'Choose from the most used publishers', 'textdomain' ),
+        'not_found'                  => __( 'No publishers found', 'textdomain' ),
+        'menu_name'                  => __( 'Publishers', 'textdomain' ),
+    );
+
+    $args = array(
+        'hierarchical'          => true,
+        'labels'                => $labels,
+        'show_ui'               => true,
+        'show_admin_column'     => true,
+        'update_count_callback' => '_update_post_term_count',
+        'query_var'             => true,
+        'rewrite'               => array( 'slug' => 'publisher' ),
+    );
+
+    register_taxonomy( 'publisher', 'product', $args );
+}
+add_action( 'init', 'custom_publisher_taxonomy', 0 );
+function custom_publisher_list_shortcode() {
+    $publishers = get_terms( array(
+        'taxonomy' => 'publisher',
+        'hide_empty' => false,
+    ) );
+
+    if ( ! empty( $publishers ) && ! is_wp_error( $publishers ) ) {
+        $output = '<ul class="publisher-list">';
+        foreach ( $publishers as $publisher ) {
+            $publisher_link = get_term_link( $publisher );
+            $output .= '<li><a href="' . esc_url( $publisher_link ) . '">' . esc_html( $publisher->name ) . '</a></li>';
+        }
+        $output .= '</ul>';
+    }
+
+    return $output;
+}
+add_shortcode( 'ibrahim_publisher_list', 'custom_publisher_list_shortcode' );
+
