@@ -70,3 +70,4 @@
 70. WPC Fly Cart for WooCommerce
 71. TranslatePress for Translation 
 72. Frontend Admin for creating Frontend Dashboard with ACF support https://wordpress.org/plugins/acf-frontend-form-element/
+73. WooCommerce Force Default Variant
