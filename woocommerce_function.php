@@ -804,3 +804,12 @@ function custom_publisher_list_shortcode() {
 }
 add_shortcode( 'ibrahim_publisher_list', 'custom_publisher_list_shortcode' );
 
+// === Custom Order Details === //
+
+add_filter( 'woocommerce_localisation_address_formats', 'custom_address_formats', 20 );
+
+function custom_address_formats( $formats ) {
+	$formats[ 'default' ]  = "{first_name} {last_name} \n Street: {address_1} {address_2}\n City: {city}\n ZIP: {postcode}\n Region: {state}\n";
+	
+	return $formats;
+}
