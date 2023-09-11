@@ -80,3 +80,9 @@ https://layoutsfordivibuilder.com/template-library/
 ============== Divi Shop Page infinite scroll =================
 
 https://help.elegantthemes.com/en/articles/4532907-infinite-scroll-for-divi-shop-module
+
+
+============== Select Tag in CSS with inline property =================
+
+tag[style*="z-index: 90;"] // tag will be tag, id or class
+
