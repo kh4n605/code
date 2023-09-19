@@ -72,3 +72,7 @@
 72. Frontend Admin for creating Frontend Dashboard with ACF support https://wordpress.org/plugins/acf-frontend-form-element/
 73. WooCommerce Force Default Variant
 74. Floating Chat Widget - https://wordpress.org/plugins/chaty/
+75. QR Code Email Ticket -Codecanyon
+76. Countdown Timer Ultimate
+77. Album and Image Gallery Plus Lightbox
+78. YayMail - WooCommerce Email Customizer
