@@ -86,3 +86,6 @@ https://help.elegantthemes.com/en/articles/4532907-infinite-scroll-for-divi-shop
 
 tag[style*="z-index: 90;"] // tag will be tag, id or class
 
+============== Slider Revolution Templates =================
+
+https://mega.nz/folder/9A4EWbDK#YCH-hbkUI8cGaYsVDFRFRw
