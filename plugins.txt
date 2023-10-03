@@ -76,3 +76,5 @@
 76. Countdown Timer Ultimate
 77. Album and Image Gallery Plus Lightbox
 78. YayMail - WooCommerce Email Customizer
+79. Anywhere Elementor - Elementor free version shortcoder
+80. Better Search and Replace - wpengine

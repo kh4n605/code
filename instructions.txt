@@ -89,3 +89,7 @@ tag[style*="z-index: 90;"] // tag will be tag, id or class
 ============== Slider Revolution Templates =================
 
 https://mega.nz/folder/9A4EWbDK#YCH-hbkUI8cGaYsVDFRFRw
+https://mega.nz/folder/k0NQ2RQa#X46KM0U1E0IDSK6MnF21iA
+
+============== WordPress Dashboard Broken =================
+define('CONCATENATE_SCRIPTS', false); 
