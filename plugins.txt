@@ -78,3 +78,7 @@
 78. YayMail - WooCommerce Email Customizer
 79. Anywhere Elementor - Elementor free version shortcoder
 80. Better Search and Replace - wpengine
+81. WP Accessibility Helper (WAH)
+82. WP Code
+83. Husky Product Filter
+84. WOOF by Category - https://wordpress.org/plugins/woof-by-category/

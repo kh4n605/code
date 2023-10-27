@@ -1,3 +1,8 @@
+ISP 
+Username: smm.ibrahim_khan
+Pass: 2023
+MTU: 1480
+
 
 ============== Fonts =================
 
@@ -93,3 +98,22 @@ https://mega.nz/folder/k0NQ2RQa#X46KM0U1E0IDSK6MnF21iA
 
 ============== WordPress Dashboard Broken =================
 define('CONCATENATE_SCRIPTS', false); 
+
+============== Slider Revolution Error in 387 No Line (replace the function with below function) =================
+
+public function check_valid_image($url){		
+
+		if( !is_string($url) || $url == "" ){ return FALSE; };
+	
+		$pos = strrpos($url, '.', -1);
+	if($pos === false) return false;
+	
+	$ext = strtolower(substr($url, $pos));
+	
+	$img_exts = array('.gif', '.jpg', '.jpeg', '.png');
+	
+	if(in_array($ext, $img_exts)) return $url;
+	
+	return false;
+	
+}
