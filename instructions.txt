@@ -4,6 +4,17 @@ Pass: 2023
 MTU: 1480
 
 
+============== FTP =================
+
+http://tv.dflix.live/
+http://ihub.live/
+https://bongobd.com/
+http://103.222.20.150/#/
+http://www.cinebioscope.com/
+http://showtimebd.com/
+
+
+
 ============== Fonts =================
 
 Barlow, Josephin Sans,
