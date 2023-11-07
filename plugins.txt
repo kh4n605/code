@@ -82,3 +82,4 @@
 82. WP Code
 83. Husky Product Filter
 84. WOOF by Category - https://wordpress.org/plugins/woof-by-category/
+85. Order Export & Order Import for WooCommerce -https://wordpress.org/plugins/order-import-export-for-woocommerce/
