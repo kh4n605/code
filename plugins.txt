@@ -86,5 +86,7 @@
 86. Tawk.to Live Chat Plugin 
 87. Bulkpress
 88. Popup Maker
+89. OTP Login Woocommerce(free with firebase) - https://wordpress.org/plugins/mobile-login-woocommerce/
+90. WooCommerce PDF Invoices, Packing Slips - Webtoffee
 
 
