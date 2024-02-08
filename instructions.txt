@@ -128,3 +128,40 @@ public function check_valid_image($url){
 	return false;
 	
 }
+
+============== First Word of post title different =================
+
+function custom_post_title_filter($title, $id) {
+    if (!is_admin() && get_post_type($id) === 'case') {
+        // Get the first two letters
+        $first_two_letters = substr($title, 0, 2);
+        
+        // Get the rest of the title
+        $rest_of_title = substr($title, 2);
+
+        // Combine with HTML markup for styling
+        $title = "<span class='the-transformation'><span class='the'>the</span> Transformation</span> <span class='title-main'><span class='weight'>" .$first_two_letters . "</span>" . $rest_of_title . " <i class='fas fa-fire' style='color:#FF2424'></i></span>";
+    }
+
+    return $title;
+}
+
+add_filter('the_title', 'custom_post_title_filter', 10, 2);
+
+function classes_single_post_title_filter($title, $id) {
+    if (!is_admin() && get_post_type($id) === 'service' && is_single()) {
+        // Get the first two letters
+        $first_two_letters = substr($title, 0, 3);
+        
+        // Get the rest of the title
+        $rest_of_title = substr($title, 3);
+
+        // Combine with HTML markup for styling
+        $title = "<span class='service-title'>" .$first_two_letters . "</span>" . $rest_of_title ;
+    }
+
+    return $title;
+}
+
+add_filter('the_title', 'classes_single_post_title_filter', 10, 2);
+
