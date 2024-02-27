@@ -246,3 +246,43 @@ function applyCustomStyles() {
     </style>';
 }
 add_action('admin_head', 'applyCustomStyles');
+
+
+============== Set display name in WooCommerce Registration =================
+
+// Add a custom field to the registration form
+add_action('woocommerce_register_form_start', 'custom_register_fields');
+function custom_register_fields() {
+    ?>
+    <p class="form-row form-row-wide">
+        <label for="display_name"><?php _e('Display Name', 'woocommerce'); ?> <span class="required">*</span></label>
+        <input type="text" class="input-text" name="display_name" id="display_name" value="<?php echo ( ! empty( $_POST['display_name'] ) ) ? esc_attr( $_POST['display_name'] ) : ''; ?>" />
+    </p>
+    <?php
+}
+
+// Validate the custom field during registration
+add_filter('woocommerce_registration_errors', 'validate_custom_fields', 10, 3);
+function validate_custom_fields($errors, $username, $email) {
+    if (empty($_POST['display_name'])) {
+        $errors->add('display_name_error', __('Please enter your display name.', 'woocommerce'));
+    }
+    return $errors;
+}
+
+// Save the custom field data when creating a new user
+add_action('woocommerce_created_customer', 'save_custom_fields');
+function save_custom_fields($customer_id) {
+    if (isset($_POST['display_name'])) {
+        update_user_meta($customer_id, 'display_name', sanitize_text_field($_POST['display_name']));
+    }
+}
+
+// Set user submitted display name as default for "Display name publicly as"
+add_filter('pre_user_display_name', 'set_user_display_name', 10);
+function set_user_display_name($display_name) {
+    if (!empty($_POST['display_name'])) {
+        $display_name = sanitize_text_field($_POST['display_name']);
+    }
+    return $display_name;
+}
