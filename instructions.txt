@@ -165,3 +165,84 @@ function classes_single_post_title_filter($title, $id) {
 
 add_filter('the_title', 'classes_single_post_title_filter', 10, 2);
 
+============== WP Admin Dashboard Dark =================
+
+<?php
+function applyCustomStyles() {
+    echo '
+    <style>
+
+    /* Change link colour to white */
+    #wpbody-content a {
+    filter: invert(1) hue-rotate(180deg) saturate(10);
+    color: white !important;
+    }
+
+    /* Change link colour to yellow */
+    #wpbody-content a:hover {
+    filter: invert(1) hue-rotate(180deg) saturate(10);
+    color: red !important;
+    }
+    
+    /* Styling for primary content area. */
+    .block-editor-page .editor-styles-wrapper {
+      color: lightgray;
+      background: #262626;
+    }
+    
+    /* Base styling adjustments. */
+    .wp-admin {
+      background-color: #262626;
+    }
+    
+    /* Image display corrections. */
+    .wp-admin #wpbody img {
+      filter: invert(1) hue-rotate(-180deg);
+      background: white;
+    }
+
+    /* Enhancements for hyperlink visuals. */
+    .block-editor-page .editor-styles-wrapper a {
+      filter: invert(0.85) hue-rotate(185deg);
+    }
+    
+    /* Filter reset for specific editor sections. */
+    .block-editor-page #wpbody {
+      filter: unset;
+    }
+
+    /* Adjustments for the main body appearance. */
+    .wp-admin #wpbody {
+      filter: invert(0.85) hue-rotate(185deg);
+    }
+
+    /* Sidebar appearance customization. */
+    .block-editor-page .interface-interface-skeleton__sidebar,
+    .block-editor-page .interface-interface-skeleton__secondary-sidebar {
+      filter: invert(0.85) hue-rotate(185deg);
+    }
+
+    /* Configuration for top navigation bar. */
+    .block-editor-page .interface-interface-skeleton__header {
+      filter: invert(0.85) hue-rotate(185deg);
+    }
+    
+    /* Primary action button styling. */
+    .block-editor-page .is-primary {
+      color: black !important;
+    }
+    
+    /* Lower section layout adjustments. */
+    .block-editor-page .edit-post-layout__metaboxes {
+      border-top: 0px;
+      background-color: #262626;
+    }
+
+    /* Reset various button BG colours */
+    .wrap .add-new-h2, .wrap .add-new-h2:active, .wrap .page-title-action, .wrap .page-title-action:active {
+    background:#f6f7f700;
+    }
+    
+    </style>';
+}
+add_action('admin_head', 'applyCustomStyles');
