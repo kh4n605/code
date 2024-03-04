@@ -852,3 +852,40 @@ function custom_address_formats( $formats ) {
     }
     
     add_filter( 'woocommerce_localisation_address_formats', 'custom_address_formats', 20 );
+
+===== Redirect Logged Out user and Logged in From specific country to WhatsApp =====
+
+    function custom_redirect_logic() {
+        // Check if the user is logged in
+        if ( is_user_logged_in() ) {
+            // Check if the user is from France based on IP address
+            $user_ip = $_SERVER['REMOTE_ADDR'];
+            $ip_details = json_decode(file_get_contents("https://ipinfo.io/{$user_ip}/json"));
+    
+            if (isset($ip_details->country) && strtoupper($ip_details->country) === 'FR') {
+                // Redirect logged-in users from France to a different link
+                wp_redirect('https://wa.me/+8801772812413');
+                exit();
+            }
+        } else {
+            // Redirect logged-out users to the WhatsApp link
+            wp_redirect('https://wa.me/+8801772812413');
+            exit();
+        }
+    }
+    
+    add_action('template_redirect', 'custom_redirect_logic');
+
+===== Refresh Main page when clicked on iframe button =====
+
+    jQuery(document).ready(function ($) {
+        $('#iframe .single_add_to_cart_button').on('click', function () {
+            // Communicate with the parent page
+            parent.postMessage('refresh', '*');
+        });
+    });
+   window.addEventListener('message', function (event) {
+    if (event.data === 'refresh') {
+      location.reload();
+    }
+  });
