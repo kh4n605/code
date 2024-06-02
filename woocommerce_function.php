@@ -878,14 +878,16 @@ function custom_address_formats( $formats ) {
 
 ===== Refresh Main page when clicked on iframe button =====
 
-    jQuery(document).ready(function ($) {
-        $('#iframe .single_add_to_cart_button').on('click', function () {
-            // Communicate with the parent page
-            parent.postMessage('refresh', '*');
-        });
+jQuery(document).ready(function ($) {
+    $('#iframe .single_add_to_cart_button').on('click', function () {
+        // Communicate with the parent page
+        parent.postMessage('refresh', '*');
     });
-   window.addEventListener('message', function (event) {
-    if (event.data === 'refresh') {
-      location.reload();
-    }
-  });
+});
+window.addEventListener('message', function (event) {
+if (event.data === 'refresh') {
+  setTimeout(function () {
+            location.reload();
+        }, 5000);
+}
+});

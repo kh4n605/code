@@ -269,7 +269,7 @@ function validate_custom_fields($errors, $username, $email) {
     }
     return $errors;
 }
-
+// hiddencharacter50@gmail.com parcentage password
 // Save the custom field data when creating a new user
 add_action('woocommerce_created_customer', 'save_custom_fields');
 function save_custom_fields($customer_id) {
