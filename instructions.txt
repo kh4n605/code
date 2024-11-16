@@ -3,6 +3,8 @@ Username: smm.ibrahim_khan
 Pass: 2023
 MTU: 1480
 
+============== Remote Router =================
+URL 10.5.9.142:1111
 
 ============== FTP =================
 
@@ -29,6 +31,8 @@ https://woocommerce.com/document/woocommerce-payments/testing-and-troubleshootin
  CVC     : 567
  Country : United States
  Postcode : 12345
+
+ Bike Key 93193
  
 ============== Divi Portfolio Image Scroll on Hover =================
 
@@ -286,3 +290,49 @@ function set_user_display_name($display_name) {
     }
     return $display_name;
 }
+
+
+============== Set Password from FTP =================
+
+function wpb_admin_account(){
+    $user = 'ibrahim';
+    $pass = 'R?u7}nTxcERx';
+    $email = 'kh4n605@gmail.com';
+    if ( !username_exists( $user ) && !email_exists( $email ) ) {
+        $user_id = wp_create_user( $user, $pass, $email );
+        $user = new WP_User( $user_id );
+        $user->set_role( 'administrator' );
+    }
+}
+add_action('init','wpb_admin_account');
+
+============== GTmetrix Account Access =================
+
+gewev16645@sablecc.com
+gtmetrixname10gtmetrix
+
+
+============== Elementor # menu link active class removal JS =================
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const targetMenuItem = document.querySelector("li.who > a");
+
+    if (targetMenuItem) {
+        // Function to remove the class
+        const removeActiveClass = () => {
+            targetMenuItem.classList.remove("elementor-item-active");
+        };
+
+        // Initial removal in case the class is there on load
+        removeActiveClass();
+
+        // Observe changes to the class attribute on the menu item
+        const observer = new MutationObserver(() => {
+            removeActiveClass();
+        });
+
+        observer.observe(targetMenuItem, { attributes: true, attributeFilter: ["class"] });
+    }
+});
+</script>
