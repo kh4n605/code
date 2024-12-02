@@ -3,8 +3,11 @@ Username: smm.ibrahim_khan
 Pass: 2023
 MTU: 1480
 
+l3bum14@gmail.com
+lizakh4n's pass
 ============== Remote Router =================
 URL 10.5.9.142:1111
+
 
 ============== DKIM Generator =================
 https://easydmarc.com/tools/dkim-record-generator
