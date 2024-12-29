@@ -12,14 +12,38 @@ URL 10.5.9.142:1111
 ============== DKIM Generator =================
 https://easydmarc.com/tools/dkim-record-generator
 
-============== FTP =================
+============== Website =================
 
-http://tv.dflix.live/
-http://ihub.live/
-https://bongobd.com/
-http://103.222.20.150/#/
-http://www.cinebioscope.com/
-http://showtimebd.com/
+1. Color-Contrast
+https://dequeuniversity.com/rules/axe/4.10/color-contrast
+
+2. Fonts
+https://aivoicemouse.com/
+Heading - Outfit, Paragraph - Nunito Sans, 
+Button - 
+ {
+   background-color: transparent;
+   padding:
+6px 13px 6px 15px;
+   background-image: linear-gradient(
+115deg, var(--e-global-color-el_c_1_color) 33%, var(--e-global-color-el_c_2_color) 100%);
+   border-radius:
+10px 0px 10px 0px;
+}
+
+3. Credits
+
+function custom_admin_footer_text($text) {
+	$new_text = 'Website by <a href="https://wa.me/+8801772812413" target="_blank">Ibrahim Khan</a>'; 
+	return $new_text;
+}
+add_filter('admin_footer_text', 'custom_admin_footer_text');
+function ibrahim_source_comment() {
+	echo "<!-- Built by Ibrahim Khan https://themesire.com Looking for WordPress friends? Send a message to WhatsApp at +8801772812413 -->"; 
+}
+add_action('get_header', 'ibrahim_source_comment');
+
+
 
 
 
