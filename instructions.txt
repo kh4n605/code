@@ -8,6 +8,11 @@ lizakh4n's pass
 ============== Remote Router =================
 URL 10.5.9.142:1111
 
+IBBL Correspondents
+https://www.islamibankbd.com/feb/correspondents
+
+PayPal
+https://www.paypal.me/Ghadamoijel
 
 ============== DKIM Generator =================
 https://easydmarc.com/tools/dkim-record-generator
