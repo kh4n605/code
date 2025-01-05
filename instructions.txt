@@ -69,6 +69,26 @@ https://woocommerce.com/document/woocommerce-payments/testing-and-troubleshootin
 
  Bike Key 93193
  
+============== Apply aria-label | name to parent and bring it to a tag =================
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.elementor-widget-image').forEach(function(widget) {
+        // Check if the parent div has an aria-label
+        if (widget.hasAttribute('aria-label')) {
+            const ariaLabel = widget.getAttribute('aria-label');
+            const anchor = widget.querySelector('a'); // Find the <a> tag within the widget
+
+            if (anchor) {
+                // Apply aria-label to <a> tag
+                anchor.setAttribute('aria-label', ariaLabel);
+                // Remove aria-label from the parent div
+                widget.removeAttribute('aria-label');
+            }
+        }
+    });
+});
+
+
 ============== Divi Portfolio Image Scroll on Hover =================
 
 Set Column Height and Overflow X and Y to hidden
