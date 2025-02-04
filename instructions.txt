@@ -18,6 +18,11 @@ https://www.paypal.me/Ghadamoijel
 https://easydmarc.com/tools/dkim-record-generator
 
 ============== Website =================
+==== CSS background Mesher ===
+https://csshero.org/mesher/
+
+==== CSS background Glassmorphism ===
+https://css.glass/
 
 1. Color-Contrast
 https://dequeuniversity.com/rules/axe/4.10/color-contrast
@@ -54,7 +59,13 @@ add_action('get_header', 'ibrahim_source_comment');
 
 ============== Fonts =================
 
-Barlow, Josephin Sans,
+Barlow, Josephin Sans, Outfit
+
+============== Icons =================
+
+https://phosphoricons.com/
+https://icones.js.org/collection/all
+https://svgl.app/
 
 ============== WooCommerce Test Payment Card =================
 
@@ -88,6 +99,27 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+============== Preload Elementor Video =================
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const bgVideo = document.querySelector('.your-elementor-video-class video');
+        if (bgVideo) {
+            bgVideo.setAttribute('preload', 'auto');
+        }
+    });
+    </script>
+============== Dequeue FontAwesome ================= 
+
+function dequeue_script_style_on_frontpage() {
+    if ( is_front_page() ) { 
+		wp_dequeue_style( 'elementor-icons-shared-0' );
+        wp_deregister_style('elementor-icons-shared-0');
+    }
+}
+add_action( 'wp_enqueue_scripts', 'dequeue_script_style_on_frontpage', 100 );
+
+============== WP All import license =================
+ac9e76a7e61a87c631e7c1bbc0ae0d42
 
 ============== Divi Portfolio Image Scroll on Hover =================
 
