@@ -24,6 +24,8 @@ https://csshero.org/mesher/
 ==== CSS background Glassmorphism ===
 https://css.glass/
 
+https://nicolaipalmkvist.com/
+
 1. Color-Contrast
 https://dequeuniversity.com/rules/axe/4.10/color-contrast
 
@@ -136,6 +138,19 @@ Set Section class "df-area" and Column class "dfc-{name}"
 
 Demo : https://divi.iotexdigital.com/
 
+============== Divi Frontend Product Sorting =================
+
+<form class="woocommerce-ordering" method="get" style="width:100%;">
+    <select name="orderby" class="orderby">
+        <option value="menu_order">Default sorting</option>
+        <option value="popularity">Sort by popularity</option>
+        <option value="rating">Sort by average rating</option>
+        <option value="date">Sort by latest</option>
+        <option value="price">Sort by price: low to high</option>
+        <option value="price-desc">Sort by price: high to low</option>
+    </select>
+    <input type="hidden" name="paged" value="1" />
+</form>
 
 ============== Get Design Idea for Layout =================
 
@@ -155,6 +170,75 @@ https://www.divilayouts.com/    *Divi Free Layout*
 ============== Show the result on frontend =================
 
 1. Add Text field and and select dynamic field and select Custom Field Name
+
+============== No 64 Extra Product plugin Accordion/Collapsible =================
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll('.rednaoWooColumn .rednaoWooField').forEach(function (section, index) {
+    // Avoid duplication
+    if (section.classList.contains('collapsible-initialized')) return;
+    section.classList.add('collapsible-initialized');
+
+    // 1. Create a new title bar
+    const label = section.querySelector('.rednaoLabel label');
+    const titleText = label ? label.innerText : 'Section';
+    const titleBar = document.createElement('div');
+    titleBar.className = 'custom-collapsible-title';
+    titleBar.innerHTML = `<h3>${titleText}</h3><span class="chevron">▼</span>`;
+
+    // 2. Insert it before the first child
+    const controlDiv = section.querySelector('.rednaoControl');
+    if (controlDiv) {
+      controlDiv.insertBefore(titleBar, controlDiv.firstChild);
+    }
+
+    // 3. Wrap content in a toggle container
+    const content = Array.from(controlDiv.children).filter(child => !child.classList.contains('custom-collapsible-title'));
+    const wrapper = document.createElement('div');
+    wrapper.className = 'custom-collapsible-content';
+    content.forEach(el => wrapper.appendChild(el));
+    controlDiv.appendChild(wrapper);
+
+    // 4. Add toggle behavior
+    titleBar.addEventListener('click', function () {
+      wrapper.classList.toggle('active');
+      titleBar.classList.toggle('open');
+    });
+  });
+});
+</script>
+
+<style>
+.custom-collapsible-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f2f2f2;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+}
+.custom-collapsible-title h3 {
+  margin: 0;
+  font-size: 16px;
+}
+.custom-collapsible-title .chevron {
+  transition: transform 0.3s;
+}
+.custom-collapsible-title.open .chevron {
+  transform: rotate(180deg);
+}
+.custom-collapsible-content {
+  display: none;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-top: none;
+}
+.custom-collapsible-content.active {
+  display: block;
+}
+</style>
 
 ============== Override Divi Module =================
 
