@@ -174,34 +174,43 @@ https://www.divilayouts.com/    *Divi Free Layout*
 ============== No 64 Extra Product plugin Accordion/Collapsible =================
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll('.rednaoWooColumn .rednaoWooField').forEach(function (section, index) {
-    // Avoid duplication
+	document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll('.rednaoWooColumn .rednaoWooField').forEach(function (section) {
     if (section.classList.contains('collapsible-initialized')) return;
     section.classList.add('collapsible-initialized');
 
-    // 1. Create a new title bar
     const label = section.querySelector('.rednaoLabel label');
     const titleText = label ? label.innerText : 'Section';
+
     const titleBar = document.createElement('div');
     titleBar.className = 'custom-collapsible-title';
     titleBar.innerHTML = `<h3>${titleText}</h3><span class="chevron">▼</span>`;
 
-    // 2. Insert it before the first child
     const controlDiv = section.querySelector('.rednaoControl');
     if (controlDiv) {
       controlDiv.insertBefore(titleBar, controlDiv.firstChild);
     }
 
-    // 3. Wrap content in a toggle container
     const content = Array.from(controlDiv.children).filter(child => !child.classList.contains('custom-collapsible-title'));
     const wrapper = document.createElement('div');
     wrapper.className = 'custom-collapsible-content';
     content.forEach(el => wrapper.appendChild(el));
     controlDiv.appendChild(wrapper);
 
-    // 4. Add toggle behavior
+    // Accordion behavior
     titleBar.addEventListener('click', function () {
+      document.querySelectorAll('.custom-collapsible-content').forEach(function (el) {
+        if (el !== wrapper) {
+          el.classList.remove('active');
+        }
+      });
+
+      document.querySelectorAll('.custom-collapsible-title').forEach(function (el) {
+        if (el !== titleBar) {
+          el.classList.remove('open');
+        }
+      });
+
       wrapper.classList.toggle('active');
       titleBar.classList.toggle('open');
     });
@@ -238,7 +247,11 @@ document.addEventListener("DOMContentLoaded", function () {
 .custom-collapsible-content.active {
   display: block;
 }
+	.rednaoLabel{
+		display:none;
+	}
 </style>
+
 
 ============== Override Divi Module =================
 
