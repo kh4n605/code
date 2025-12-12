@@ -596,3 +596,13 @@ Anything causing overflow becomes outlined in red
 It logs in console
 
 💥 You will instantly see the exact element causing the scrollbar.
+
+==== Stop Overflow-x keeping sticky position ====
+
+html {
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow-x: hidden;
+    }
+    
