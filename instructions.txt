@@ -574,3 +574,25 @@ add_action('admin_head-users.php', function () {
         });
     }
 });
+
+=== Overflow Detector ====
+
+✔ Step 1 — Run this code in Chrome DevTools → Console
+
+This shows EXACTLY which element is causing horizontal overflow:
+
+[...document.body.querySelectorAll("*")].forEach(el => {
+  if (el.scrollWidth > el.clientWidth) {
+    console.log("Overflowing element:", el);
+    el.style.outline = "3px solid red"; // visual highlight
+  }
+});
+
+
+After running it:
+
+Anything causing overflow becomes outlined in red
+
+It logs in console
+
+💥 You will instantly see the exact element causing the scrollbar.
