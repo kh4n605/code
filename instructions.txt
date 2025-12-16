@@ -606,3 +606,117 @@ html {
         overflow-x: hidden;
     }
     
+
+    ======= Gallery image slider WooCommerce =======
+
+    add_action('wp_footer', function() {
+    if( ! is_product() ) return; // Only on single product pages
+    ?>
+    <style>
+    /* Thumbnail container scrollable */
+    ol.flex-control-nav.flex-control-thumbs {
+        display: flex !important;
+        overflow-x: auto;
+        gap: 8px;
+        padding: 5px 0;
+        scroll-behavior: smooth;
+        position: relative;
+        margin: 0;
+    }
+    ol.flex-control-nav.flex-control-thumbs::-webkit-scrollbar {
+        display: none;
+    }
+    ol.flex-control-nav.flex-control-thumbs li {
+        flex: 0 0 auto;
+        cursor: pointer;
+    }
+    ol.flex-control-nav.flex-control-thumbs li img.flex-active {
+        border: 2px solid #ffd700;
+        border-radius: 4px;
+    }
+
+    /* Arrow buttons over thumbnails */
+    .thumb-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        background: rgba(0,0,0,0.5);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 18px;
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+		padding: 10px;
+    }
+    .thumb-arrow.left { left: 0; }
+    .thumb-arrow.right { right: 0; }
+
+    /* Wrap thumbnails to allow absolute arrows */
+    .thumb-container-wrapper {
+        position: relative;
+        width: 100%;
+    }
+    </style>
+
+    <script>
+    (function(){
+        function initThumbSlider(){
+            const thumbContainer = document.querySelector('ol.flex-control-nav.flex-control-thumbs');
+            if(!thumbContainer || thumbContainer.dataset.sliderInitialized) return;
+            thumbContainer.dataset.sliderInitialized = true;
+
+            // Wrap thumbnail container
+            const wrapper = document.createElement('div');
+            wrapper.className = 'thumb-container-wrapper';
+            thumbContainer.parentElement.insertBefore(wrapper, thumbContainer);
+            wrapper.appendChild(thumbContainer);
+
+            // Create arrows
+            const leftBtn = document.createElement('button');
+            leftBtn.className = 'thumb-arrow left';
+            leftBtn.innerHTML = '&#10094;';
+            wrapper.appendChild(leftBtn);
+
+            const rightBtn = document.createElement('button');
+            rightBtn.className = 'thumb-arrow right';
+            rightBtn.innerHTML = '&#10095;';
+            wrapper.appendChild(rightBtn);
+
+            // Scroll thumbnails on arrow click
+            leftBtn.addEventListener('click', () => {
+                thumbContainer.scrollBy({ left: -150, behavior: 'smooth' });
+            });
+            rightBtn.addEventListener('click', () => {
+                thumbContainer.scrollBy({ left: 150, behavior: 'smooth' });
+            });
+
+            // Prevent page jump on thumbnail click
+            const thumbs = thumbContainer.querySelectorAll('li img');
+            thumbs.forEach(thumb => {
+                thumb.addEventListener('click', function(e){
+                    // Remove focus to prevent browser scroll
+                    const focused = document.activeElement;
+                    if(focused) focused.blur();
+                }, true);
+            });
+        }
+
+        // Wait for thumbnails to exist (WooCommerce loads them dynamically)
+        const observer = new MutationObserver(() => {
+            if(document.querySelector('ol.flex-control-nav.flex-control-thumbs')) {
+                initThumbSlider();
+            }
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+    })();
+    </script>
+    <?php
+});
+
+===== Gallery image slider WooCommerce end ======
